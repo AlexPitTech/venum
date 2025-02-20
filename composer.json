@@ -1,0 +1,22 @@
+{
+    "name": "pit-tech/v-enum",
+    "description": "Enum collections helper",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PitTech\\vEnum\\": "src/",
+            "PitTech\\vEnum\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alex Pit",
+            "email": "alex.pit.tech@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.3"
+    }
+}
