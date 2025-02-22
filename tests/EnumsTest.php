@@ -5,6 +5,7 @@ namespace PitTech\vEnum\Tests;
 use PHPUnit\Framework\TestCase;
 use PitTech\vEnum\Factory;
 use PitTech\vEnum\OutOfBoundsException;
+use PitTech\vEnum\vEnum;
 
 class EnumsTest extends TestCase
 {
@@ -27,6 +28,38 @@ class EnumsTest extends TestCase
         self::assertEquals([
             'giraffe' => 127,
         ], Animals::only(Animals::GIRAFFIDAE)->payloads());
+    }
+
+    public function testMap(): void
+    {
+        self::assertEquals(
+            [
+                'leo' => [
+                    'label' => 'Leo as default',
+                    'value' => 'leo',
+                ],
+                'jaguar' => [
+                    'label' => 'Jaguar as default',
+                    'value' => 'jaguar',
+                ],
+                'panther' => [
+                    'label' => 'Panther as default',
+                    'value' => 'panther',
+                ],
+                'guepard' => [
+                    'label' => 'Guepard', // declared
+                    'value' => 'guepard',
+                ],
+                'giraffe' => [
+                    'label' => 'Giraffe as default',
+                    'value' => 'giraffe',
+                ],
+            ],
+            Animals::map(fn(vEnum $vEnum) => [
+                'label' => $vEnum->label ?? ucfirst($vEnum->value). ' as default',
+                'value' => $vEnum->value,
+            ])
+        );
     }
 
     public function testValueFrom(): void
